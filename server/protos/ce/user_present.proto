@@ -1,0 +1,34 @@
+﻿syntax = "proto3";
+package krdori.pb2.ce;
+
+import "server/pb2/ce/master_player_resource.proto";
+import "server/pb2/ce/newly_opened_content.proto";
+import "server/pb2/ce/suite_user.proto";
+
+message UserPresent {
+  uint64 present_id = 1;
+  uint64 user_id = 2;
+  string resource_type = 3;
+  uint32 resource_id = 4;
+  uint32 quantity = 5;
+  string reason = 6;
+  optional uint64 expired_at = 7;
+  uint64 created_at = 8;
+}
+
+message Pagination {
+  uint64 start = 1;
+  uint32 limit = 2;
+  uint64 record = 3;
+}
+
+message UserPresentList {
+  repeated krdori.pb2.ce.UserPresent entries = 1;
+  krdori.pb2.ce.Pagination pagination = 2;
+}
+
+message ObtainPresentResponse {
+  krdori.pb2.ce.SuiteUserGetResponse update_resources = 1;
+  krdori.pb2.ce.PlayerResourceList resources = 2;
+  krdori.pb2.ce.NewlyOpenedContentList newly_opened_contents = 3;
+}

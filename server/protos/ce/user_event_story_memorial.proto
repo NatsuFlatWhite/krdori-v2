@@ -1,0 +1,33 @@
+﻿syntax = "proto3";
+package krdori.pb2.ce;
+
+import "server/pb2/ce/user_event_story.proto";
+import "server/pb2/ce/master_event.proto";
+import "server/pb2/ce/master_event_story.proto";
+import "server/pb2/ce/master_event_character.proto";
+
+message UserEventStoryMemorial {
+  uint32 event_id = 1;
+  krdori.pb2.ce.UserEventStoryList user_event_story_list = 2;
+  bool is_exist_un_read_story = 3;
+  bool is_locked = 4;
+}
+
+message UserEventStoryMemorialMap {
+  map<uint32, krdori.pb2.ce.UserEventStoryMemorial> entries = 1;
+}
+
+message PastEventMap {
+  map<uint32, krdori.pb2.ce.MasterEvent> entries = 1;
+}
+
+message PastEvenStorytMap {
+  map<uint32, krdori.pb2.ce.MasterEventStoryList> entries = 1;
+}
+
+message UserEventStoryMemorialResponse {
+  krdori.pb2.ce.UserEventStoryMemorialMap user_event_story_memorial_map = 1;
+  krdori.pb2.ce.PastEventMap past_event_map = 2;
+  krdori.pb2.ce.PastEvenStorytMap past_event_story_map = 3;
+  krdori.pb2.ce.MasterEventCharacterListMap past_event_character_list_map = 4;
+}

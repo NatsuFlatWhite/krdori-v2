@@ -1,0 +1,88 @@
+﻿syntax = "proto3";
+package krdori.pb2.ce;
+
+import "server/pb2/ce/master_player_resource.proto";
+import "server/pb2/ce/newly_opened_content.proto";
+import "server/pb2/ce/suite_user.proto";
+import "server/pb2/ce/updated_band_deck_rank.proto";
+import "server/pb2/ce/user.proto";
+import "server/pb2/ce/user_band_rank.proto";
+import "server/pb2/ce/user_music_achievement.proto";
+import "server/pb2/ce/user_situation.proto";
+
+message UserMusicPreProcessRequest {
+  string live_type = 1;
+  uint32 event_id = 2;
+  uint32 live_boost_use_count = 3;
+  string room_id = 4;
+  bool is_music_video = 6;
+  uint32 music_video_seq = 7;
+}
+
+message UserMusicRequest {
+  string music_difficulty = 1;
+  string clear_rank = 2;
+  uint32 score = 3;
+  uint32 combo = 4;
+  string clear_status = 6;
+  uint32 event_id = 7;
+  uint32 perfect_count = 8;
+  uint32 great_count = 9;
+  uint32 good_count = 10;
+  uint32 bad_count = 11;
+  uint32 miss_count = 12;
+  uint32 user_deck_total_power = 13;
+  repeated string cheat_user_types = 14;
+  uint32 total_notes_count = 15;
+  uint32 tap_count = 16;
+  uint32 final_life = 18;
+  bool is_music_video = 19;
+  uint32 support_deck_total_power = 21;
+  repeated uint32 support_deck_members = 22;
+  bool is_live2d = 23;
+  bool is_auto_live = 24;
+  uint32 judge_count = 100;
+}
+
+message UserMusicPracticeRequest {
+  string music_difficulty = 1;
+  uint32 score = 2;
+}
+
+message UserMusicContinueRequest {
+  uint32 continue_count = 1;
+  uint64 continue_time = 2;
+}
+
+message UserMusicContinueResponse {
+  krdori.pb2.ce.UserGamedata user_gamedata = 1;
+  string continue_hash = 2;
+}
+
+message RetryRequest {
+  bool is_music_video = 1;
+  uint32 music_video_seq = 2;
+  string music_difficulty = 3;
+  string in_game_mode = 4;
+}
+
+message SuiteUserMusic {
+  krdori.pb2.ce.SuiteUserGetResponse update_resources = 1;
+  krdori.pb2.ce.PlayerResourceList drops = 2;
+  krdori.pb2.ce.NewlyOpenedContentList newly_opened_contents = 3;
+  krdori.pb2.ce.UserBandRankList user_band_rank_list = 4;
+  krdori.pb2.ce.UserSituationList user_situation_list = 5;
+  krdori.pb2.ce.PlayerResourceList achievement_rewards = 7;
+  uint32 lb_bonus = 8;
+  uint32 lb_use_count = 10;
+  string solo_score_rank = 12;
+  krdori.pb2.ce.UserMusicAchievementMap user_music_achievement_map = 14;
+  krdori.pb2.ce.PlayerLimitedResourceList limited_drops = 19;
+  krdori.pb2.ce.UpdatedBandDeckRankList updated_band_deck_rank_list = 20;
+  uint32 live_point = 21;
+}
+
+message SuiteUserMusicPractice {
+  krdori.pb2.ce.SuiteUserGetResponse update_resources = 1;
+  string solo_score_rank = 2;
+}

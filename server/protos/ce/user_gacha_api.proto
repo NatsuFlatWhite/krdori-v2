@@ -1,0 +1,36 @@
+﻿syntax = "proto3";
+package krdori.pb2.ce;
+
+import "server/pb2/ce/master_player_resource.proto";
+import "server/pb2/ce/suite_user.proto";
+
+message UserGachaRequest {
+  uint32 gacha_id = 1;
+  uint32 band_id = 2;
+  reserved 3;
+  uint32 payment_method_id = 4;
+}
+
+message UserGachaResponse {
+  uint32 situation_id = 1;
+  bool is_first_get = 2;
+}
+
+message UserGachaResponseList {
+  repeated krdori.pb2.ce.UserGachaResponse entries = 1;
+  krdori.pb2.ce.PlayerResourceList extras = 2;
+  reserved 3;
+  uint32 before_gacha_seal = 4;
+  uint32 after_gacha_seal = 5;
+  uint32 before_star_seal = 6;
+  uint32 after_star_seal = 7;
+  reserved 8;
+  uint32 duplicate_star_seal = 9;
+}
+
+message SuiteUserGachaResponse {
+  reserved 1;
+  krdori.pb2.ce.UserGachaResponseList gacha_results = 2;
+  reserved 3;
+  krdori.pb2.ce.SuiteUserGetResponse update_resources = 4;
+}

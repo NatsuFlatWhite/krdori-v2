@@ -1,0 +1,70 @@
+﻿syntax = "proto3";
+package krdori.pb2.ce;
+
+import "server/pb2/ce/user_area_item.proto";
+import "server/pb2/ce/user_deck.proto";
+import "server/pb2/ce/user_deck_rating.proto";
+import "server/pb2/ce/user_high_score_rating.proto";
+import "server/pb2/ce/user_profile_degree.proto";
+import "server/pb2/ce/user_profile_situation.proto";
+import "server/pb2/ce/user_situation.proto";
+
+message MapKeyUint32ValueUint32 {
+  map<uint32, uint32> entries = 1;
+}
+
+message MapKeyStringValueUint64 {
+  map<string, uint64> entries = 1;
+}
+
+message UserDeckTotalRatingMap {
+  map<uint32, krdori.pb2.ce.UserDeckTotalRating> entries = 1;
+}
+
+message UserTwitter {
+  uint64 twitter_id = 1;
+  string twitter_name = 2;
+  string screen_name = 3;
+  string url = 4;
+  string profile_image_url = 5;
+}
+
+message UserProfile {
+  uint64 user_id = 1;
+  string user_name = 2;
+  uint32 rank = 3;
+  uint32 degree = 4;
+  string introduction = 5;
+  bool publish_total_deck_power_flg = 11;
+  bool publish_band_rank_flg = 12;
+  bool publish_music_cleared_flg = 13;
+  bool publish_music_full_combo_flg = 14;
+  bool publish_high_score_rating_flg = 15;
+  bool publish_user_id_flg = 16;
+  bool searchable_flg = 17;
+  bool publish_updated_at_flg = 18;
+  bool friend_applicable_flg = 19;
+  bool publish_music_all_perfect_flg = 20;
+  bool publish_deck_rank_flg = 21;
+  bool publish_stage_achievement_conditions_flg = 22;
+  bool publish_stage_friend_ranking_flg = 23;
+  krdori.pb2.ce.UserSituationList main_deck_user_situations = 101;
+  krdori.pb2.ce.UserAreaItemList enabled_user_area_items = 102;
+  krdori.pb2.ce.MapKeyUint32ValueUint32 band_rank_map = 103;
+  krdori.pb2.ce.MapKeyStringValueUint64 cleared_music_count_map = 104;
+  krdori.pb2.ce.MapKeyStringValueUint64 full_combo_music_count_map = 105;
+  krdori.pb2.ce.UserHighScoreRating user_high_score_rating = 106;
+  krdori.pb2.ce.UserDeck main_user_deck = 107;
+  krdori.pb2.ce.UserProfileSituation user_profile_situation = 108;
+  krdori.pb2.ce.UserProfileDegreeMap user_profile_degree_map = 109;
+  krdori.pb2.ce.UserTwitter user_twitter = 110;
+  krdori.pb2.ce.MapKeyStringValueUint64 all_perfect_music_count_map = 111;
+  krdori.pb2.ce.UserDeckTotalRatingMap user_deck_total_rating_map = 112;
+  krdori.pb2.ce.MapKeyUint32ValueUint32 stage_challenge_achievement_conditions_map = 113;
+  bool search_success_flg = 200;
+}
+
+message UserProfileSearchResponse {
+  krdori.pb2.ce.UserProfile user_profile = 1;
+  bool search_success_flg = 2;
+}

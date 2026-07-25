@@ -1,0 +1,15 @@
+syntax = "proto3";
+package krdori.pb2.ce;
+
+message UserProfileSituation {
+  uint64 user_id = 1;
+  uint32 situation_id = 2;
+  string illust = 3;
+  string view_profile_situation_status = 4;
+}
+
+message UserProfileSituationRequest {
+  uint32 situation_id = 1;
+  string illust = 2;
+  string view_profile_situation_status = 3;
+}

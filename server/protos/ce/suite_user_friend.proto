@@ -1,0 +1,20 @@
+﻿syntax = "proto3";
+package krdori.pb2.ce;
+
+import "server/pb2/ce/suite_user.proto";
+import "server/pb2/ce/user_friend.proto";
+
+message SuiteUserFriendTopResponse {
+  krdori.pb2.ce.SuiteUserGetResponse update_resources = 1;
+  krdori.pb2.ce.UserFriendDetail user_friend_detail = 2;
+}
+
+message SuiteUserFriendResultResponse {
+  krdori.pb2.ce.SuiteUserGetResponse update_resources = 1;
+  string friend_result_code = 2;
+  krdori.pb2.ce.UserFriendDetail user_friend_detail = 3;
+}
+
+message SuiteUserFriendRelationResponse {
+  krdori.pb2.ce.SuiteUserGetResponse update_resources = 1;
+}

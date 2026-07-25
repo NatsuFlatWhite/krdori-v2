@@ -1,0 +1,12 @@
+﻿syntax = "proto3";
+package krdori.pb2.ce;
+
+import "server/pb2/ce/suite_user.proto";
+
+message UserSettingProfileDegree {
+  krdori.pb2.ce.SuiteUserGetResponse update_resources = 1;
+}
+
+message UserSettingProfileSituation {
+  krdori.pb2.ce.SuiteUserGetResponse update_resources = 1;
+}

@@ -1,0 +1,14 @@
+﻿syntax = "proto3";
+package krdori.pb2.ce;
+
+import "server/pb2/ce/master_player_resource.proto";
+import "server/pb2/ce/suite_user.proto";
+
+message MissionReward {
+  krdori.pb2.ce.SuiteUserGetResponse update_resources = 1;
+  krdori.pb2.ce.PlayerResourceList mission_reward_list = 2;
+}
+
+message MissionClear {
+  krdori.pb2.ce.SuiteUserGetResponse update_resources = 1;
+}

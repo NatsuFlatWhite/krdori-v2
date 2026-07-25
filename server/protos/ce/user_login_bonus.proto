@@ -1,0 +1,20 @@
+﻿syntax = "proto3";
+package krdori.pb2.ce;
+
+import "server/pb2/ce/master_player_resource.proto";
+
+message UserLoginBonus {
+  uint64 user_id = 1;
+  uint32 login_bonus_id = 2;
+  uint32 days = 3;
+  // uint64 expired_at = 4;
+}
+
+message UserLoginBonusMap {
+  map<uint32, krdori.pb2.ce.UserLoginBonus> entries = 1;
+}
+
+message AcceptResponse {
+  krdori.pb2.ce.PlayerResourceList player_resources = 1;
+  krdori.pb2.ce.PlayerResourceList granted_bonus = 2;
+}

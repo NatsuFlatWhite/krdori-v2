@@ -1,0 +1,19 @@
+﻿syntax = "proto3";
+package krdori.pb2.ce;
+
+import "server/pb2/ce/suite_user.proto";
+import "server/pb2/ce/master_player_resource.proto";
+
+message PanelMissionClearInfo {
+  uint32 panel_mission_id = 1;
+  uint32 board_seq = 2;
+  repeated uint32 panel_seq_list = 3;
+  krdori.pb2.ce.PlayerResourceList reward_list = 4;
+}
+
+message SuitePanelMissionReward {
+  krdori.pb2.ce.SuiteUserGetResponse update_resources = 1;
+  krdori.pb2.ce.PanelMissionClearInfo current_clear_info = 2;
+  krdori.pb2.ce.PanelMissionClearInfo next_board_clear_info = 3;
+  krdori.pb2.ce.PlayerResourceList board_complete_reward_list = 4;
+}

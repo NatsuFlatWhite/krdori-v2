@@ -1,0 +1,43 @@
+﻿syntax = "proto3";
+package krdori.pb2.ce;
+
+import "server/pb2/ce/newly_opened_content.proto";
+import "server/pb2/ce/suite_user.proto";
+import "server/pb2/ce/updated_band_deck_rank.proto";
+
+message UserShoplistRequest {
+  uint64 user_id = 1;
+  uint32 shop_id = 2;
+}
+
+message UserShoplist {
+  uint64 user_id = 1;
+  uint32 shop_id = 2;
+  uint32 area_item_id = 3;
+  uint32 area_item_category = 4;
+  uint32 area_item_level = 5;
+  string status = 6;
+  string shop_category = 7;
+  uint32 seq = 8;
+  uint32 amount = 9;
+  uint32 shop_list_id = 10;
+}
+
+message UserShoplistResponse {
+  repeated krdori.pb2.ce.UserShoplist entries = 1;
+}
+
+message UserShoplistList {
+  repeated krdori.pb2.ce.UserShoplist entries = 1;
+}
+
+message UserAreaItemRequest {}
+
+message UserAreaItemResponse {}
+
+message SuiteUserShoplistResponse {
+  krdori.pb2.ce.SuiteUserGetResponse update_resources = 1;
+  krdori.pb2.ce.UserShoplistList user_shop_list = 2;
+  krdori.pb2.ce.NewlyOpenedContentList newly_opened_contents = 3;
+  krdori.pb2.ce.UpdatedBandDeckRankList updated_band_deck_rank_list = 4;
+}

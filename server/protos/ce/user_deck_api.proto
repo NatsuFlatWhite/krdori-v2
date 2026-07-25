@@ -1,0 +1,27 @@
+﻿syntax = "proto3";
+package krdori.pb2.ce;
+
+import "server/pb2/ce/suite_user.proto";
+import "server/pb2/ce/user_deck.proto";
+
+message EditUserDeckRequest {
+  string deck_name = 2;
+  optional uint32 leader = 3;
+  optional uint32 member1 = 4;
+  optional uint32 member2 = 5;
+  optional uint32 member3 = 6;
+  optional uint32 member4 = 7;
+  bool is_recommend = 9;
+  string deck_type = 10;
+}
+
+message EditUserDeckResponse {
+  krdori.pb2.ce.SuiteUserGetResponse update_resources = 1;
+}
+
+message UserDeckMapGetRequest {
+}
+
+message UserDeckMapGetResponse {
+  map<uint32, krdori.pb2.ce.UserDeck> entries = 1;
+}

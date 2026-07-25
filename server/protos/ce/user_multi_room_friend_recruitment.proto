@@ -1,0 +1,6 @@
+syntax = "proto3";
+package krdori.pb2.ce;
+
+message UserMultiRoomFriendRecruitmentLiveTopResponse {
+  repeated string recruitmented_live_type_list = 1;
+}

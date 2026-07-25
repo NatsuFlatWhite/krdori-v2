@@ -1,0 +1,56 @@
+﻿syntax = "proto3";
+package krdori.pb2.ce;
+
+import "server/pb2/ce/user_situation.proto";
+import "server/pb2/ce/user_profile_situation.proto";
+import "server/pb2/ce/user_profile_degree.proto";
+
+message UserFriend {
+  uint64 user_id = 1;
+  string status = 2;
+  string user_name = 3;
+  uint32 rank = 4;
+  krdori.pb2.ce.UserSituation leader_situation = 5;
+  string introduction = 6;
+  uint32 degree = 7;
+  uint64 last_login_at = 8;
+  uint64 friend_updated_at = 9;
+  bool publish_updated_at_flg = 10;
+  uint64 last_changed_user_id = 11;
+  krdori.pb2.ce.UserProfileSituation user_profile_situation = 12;
+  krdori.pb2.ce.UserProfileDegreeMap user_profile_degree_map = 13;
+}
+
+message UserFriendMap {
+  map<uint64, krdori.pb2.ce.UserFriend> entries = 1;
+}
+
+message UserFriendDetail {
+  krdori.pb2.ce.UserFriendMap application_map = 1;
+  krdori.pb2.ce.UserFriendMap approval_map = 2;
+  krdori.pb2.ce.UserFriendMap friend_map = 3;
+  uint32 application_limit = 4;
+  uint32 approval_limit = 5;
+  uint32 friend_limit = 6;
+}
+
+message UserFriendRelation {
+  uint64 user_id = 1;
+  string status = 2;
+  uint64 opponent_user_id = 3;
+  uint64 friend_updated_at = 4;
+  uint64 last_changed_user_id = 5;
+}
+
+message UserFriendRelationMap {
+  map<uint64, krdori.pb2.ce.UserFriendRelation> entries = 1;
+}
+
+message UserFriendRelationDetail {
+  krdori.pb2.ce.UserFriendRelationMap application_map = 1;
+  krdori.pb2.ce.UserFriendRelationMap approval_map = 2;
+  krdori.pb2.ce.UserFriendRelationMap friend_map = 3;
+  uint32 application_limit = 4;
+  uint32 approval_limit = 5;
+  uint32 friend_limit = 6;
+}
